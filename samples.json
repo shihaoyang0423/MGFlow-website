@@ -1,0 +1,210 @@
+[
+  {
+    "id": "garden_portrait",
+    "image": "sample-t2i-garden_portrait.webp",
+    "title": "Golden-hour portrait",
+    "task": "t2i",
+    "prompt": "A beautiful young woman with long dark hair stands in a sunlit garden, soft golden light on her face, delicate flowers around her, shallow depth of field, elegant portrait photography.",
+    "seed": 2850020702,
+    "nfe": 1,
+    "model": "FLUX.2 [klein] 4B + MGFlow",
+    "resolution": "512 × 512"
+  },
+  {
+    "id": "alpaca",
+    "image": "sample-t2i-alpaca.webp",
+    "title": "A little softness",
+    "task": "t2i",
+    "prompt": "A fluffy cream-colored alpaca standing in a sunny green meadow, soft morning light, gentle expression, shallow depth of field, pastel color palette, whimsical children's book illustration style.",
+    "seed": 1615242486,
+    "nfe": 1,
+    "model": "FLUX.2 [klein] 4B + MGFlow",
+    "resolution": "512 × 512"
+  },
+  {
+    "id": "sports_car",
+    "image": "sample-t2i-sports_car.webp",
+    "title": "Motion in the rain",
+    "task": "t2i",
+    "prompt": "A red sports car drifts through a rain-soaked stadium beneath a blazing and neat MGFlow neon sign; flying spray, wet reflections, low-angle sports photograph",
+    "seed": 1986584303,
+    "nfe": 1,
+    "model": "FLUX.2 [klein] 4B + MGFlow",
+    "resolution": "512 × 512"
+  },
+  {
+    "id": "clay_portrait",
+    "image": "sample-t2i-clay_portrait.webp",
+    "title": "Made of clay",
+    "task": "t2i",
+    "prompt": "Claymation fashion portrait, woman in purple beret and orange ruffled collar posing beside a solid-colored awning, terracotta storefront, morning light casting soft shadows, medium close-up, stop-motion clay texture.",
+    "seed": 1616704136,
+    "nfe": 1,
+    "model": "FLUX.2 [klein] 4B + MGFlow",
+    "resolution": "512 × 512"
+  },
+  {
+    "id": "plush_puppy",
+    "image": "sample-t2i-plush_puppy.webp",
+    "title": "Soft daylight",
+    "task": "t2i",
+    "prompt": "A cute plush puppy with two large floppy ears, sitting on a clean table, seen from a side angle, soft daylight, shallow depth of field, cozy still-life photograph.",
+    "seed": 96481954,
+    "nfe": 1,
+    "model": "FLUX.2 [klein] 4B + MGFlow",
+    "resolution": "512 × 512"
+  },
+  {
+    "id": "hidden_valley",
+    "image": "sample-t2i-hidden_valley.webp",
+    "title": "Beyond the archway",
+    "task": "t2i",
+    "prompt": "A hidden valley revealed through a rocky archway, lush green terraces, mist drifting between cliffs, a still turquoise pool reflecting soft dawn light, wide landscape view, painterly digital art.",
+    "seed": 3966178866,
+    "nfe": 1,
+    "model": "FLUX.2 [klein] 4B + MGFlow",
+    "resolution": "512 × 512"
+  },
+  {
+    "id": "watercolor_portrait",
+    "image": "sample-t2i-watercolor_portrait.webp",
+    "title": "Watercolor study",
+    "task": "t2i",
+    "prompt": "Fashion portrait in watercolor: a Somali model in an indigo headwrap and ochre linen jacket poses against a sunlit mud-brick wall, three-quarter view, soft dry-brush washes, warm dusty palette, loose paper texture.",
+    "seed": 2228814671,
+    "nfe": 1,
+    "model": "FLUX.2 [klein] 4B + MGFlow",
+    "resolution": "512 × 512"
+  },
+  {
+    "id": "twilight_sculpture",
+    "image": "sample-t2i-twilight_sculpture.webp",
+    "title": "Twilight in blue",
+    "task": "t2i",
+    "prompt": "Wide cinematic still of a towering sculpture of weathered copper and blue resin standing in a misty deserted plaza at soft twilight, camera pulled far back to show the full statue small within the empty square, calm deep blue tones.",
+    "seed": 3659870853,
+    "nfe": 1,
+    "model": "FLUX.2 [klein] 4B + MGFlow",
+    "resolution": "512 × 512"
+  },
+  {
+    "id": "broccoli-1",
+    "image": "sample-imagenet-broccoli-1.webp",
+    "title": "Broccoli",
+    "task": "imagenet",
+    "prompt": "Class condition: broccoli.",
+    "nfe": 1,
+    "model": "pMF-H + MGFlow-KL",
+    "resolution": "256 × 256"
+  },
+  {
+    "id": "broccoli-2",
+    "image": "sample-imagenet-broccoli-2.webp",
+    "title": "Broccoli",
+    "task": "imagenet",
+    "prompt": "Class condition: broccoli.",
+    "nfe": 1,
+    "model": "pMF-H + MGFlow-KL",
+    "resolution": "256 × 256"
+  },
+  {
+    "id": "banana-1",
+    "image": "sample-imagenet-banana-1.webp",
+    "title": "Banana",
+    "task": "imagenet",
+    "prompt": "Class condition: banana.",
+    "nfe": 1,
+    "model": "pMF-H + MGFlow-KL",
+    "resolution": "256 × 256"
+  },
+  {
+    "id": "banana-2",
+    "image": "sample-imagenet-banana-2.webp",
+    "title": "Banana",
+    "task": "imagenet",
+    "prompt": "Class condition: banana.",
+    "nfe": 1,
+    "model": "pMF-H + MGFlow-KL",
+    "resolution": "256 × 256"
+  },
+  {
+    "id": "tennis-ball-1",
+    "image": "sample-imagenet-tennis-ball-1.webp",
+    "title": "Tennis ball",
+    "task": "imagenet",
+    "prompt": "Class condition: tennis ball.",
+    "nfe": 1,
+    "model": "pMF-H + MGFlow-KL",
+    "resolution": "256 × 256"
+  },
+  {
+    "id": "tennis-ball-2",
+    "image": "sample-imagenet-tennis-ball-2.webp",
+    "title": "Tennis ball",
+    "task": "imagenet",
+    "prompt": "Class condition: tennis ball.",
+    "nfe": 1,
+    "model": "pMF-H + MGFlow-KL",
+    "resolution": "256 × 256"
+  },
+  {
+    "id": "castle-1",
+    "image": "sample-imagenet-castle-1.webp",
+    "title": "Castle",
+    "task": "imagenet",
+    "prompt": "Class condition: castle.",
+    "nfe": 1,
+    "model": "pMF-H + MGFlow-KL",
+    "resolution": "256 × 256"
+  },
+  {
+    "id": "castle-2",
+    "image": "sample-imagenet-castle-2.webp",
+    "title": "Castle",
+    "task": "imagenet",
+    "prompt": "Class condition: castle.",
+    "nfe": 1,
+    "model": "pMF-H + MGFlow-KL",
+    "resolution": "256 × 256"
+  },
+  {
+    "id": "airliner-1",
+    "image": "sample-imagenet-airliner-1.webp",
+    "title": "Airliner",
+    "task": "imagenet",
+    "prompt": "Class condition: airliner.",
+    "nfe": 1,
+    "model": "pMF-H + MGFlow-KL",
+    "resolution": "256 × 256"
+  },
+  {
+    "id": "airliner-2",
+    "image": "sample-imagenet-airliner-2.webp",
+    "title": "Airliner",
+    "task": "imagenet",
+    "prompt": "Class condition: airliner.",
+    "nfe": 1,
+    "model": "pMF-H + MGFlow-KL",
+    "resolution": "256 × 256"
+  },
+  {
+    "id": "acoustic-guitar-1",
+    "image": "sample-imagenet-acoustic-guitar-1.webp",
+    "title": "Acoustic guitar",
+    "task": "imagenet",
+    "prompt": "Class condition: acoustic guitar.",
+    "nfe": 1,
+    "model": "pMF-H + MGFlow-KL",
+    "resolution": "256 × 256"
+  },
+  {
+    "id": "acoustic-guitar-2",
+    "image": "sample-imagenet-acoustic-guitar-2.webp",
+    "title": "Acoustic guitar",
+    "task": "imagenet",
+    "prompt": "Class condition: acoustic guitar.",
+    "nfe": 1,
+    "model": "pMF-H + MGFlow-KL",
+    "resolution": "256 × 256"
+  }
+]

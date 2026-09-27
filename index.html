@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MGFlow unifies distributional training for one-step visual generation through Wasserstein gradient flows and Gaussian mixture models.">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="color-scheme" content="light">
+  <title>MGFlow · One-Step Visual Generation</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#overview">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a href="#" class="brand" aria-label="MGFlow home"><img src="favicon.svg" alt="" width="30" height="30"> MGFlow</a>
+      <div class="nav-links"><a href="#samples">Samples</a><a href="#method">Method</a><a href="#results">Results</a><a href="#checkpoints">Checkpoints <span aria-hidden="true">↗</span></a></div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero wrap" id="overview">
+      <p class="eyebrow"><span class="small-dot"></span> Mixture Gradient Flow</p>
+      <h1>Unifying Distributional Training<br class="desktop-break"> for <span>One-Step Visual Generation</span></h1>
+      <p class="hero-description">A common gradient-flow view of distributional training.<br class="desktop-break"> Gaussian mixtures capture multimodal feature distributions with a compact, adjustable representation.</p>
+      <div class="hero-actions"><a class="button primary" href="#samples">Explore samples <span aria-hidden="true">↓</span></a><a class="button secondary" href="https://huggingface.co/MGFlow/MGFlow" target="_blank" rel="noopener noreferrer">Model weights <span aria-hidden="true">↗</span></a></div>
+      <p class="anonymous-note">Anonymous project page</p>
+      <div class="hero-film" aria-label="Selected one-step text-to-image samples">
+        <button data-sample="garden_portrait" aria-label="View Golden-hour portrait"><img src="sample-t2i-garden_portrait.webp" alt="Portrait in a sunlit garden" width="512" height="512" fetchpriority="high"></button>
+        <button data-sample="hidden_valley" aria-label="View Beyond the archway"><img src="sample-t2i-hidden_valley.webp" alt="A green valley seen through a rocky archway" width="512" height="512"></button>
+        <button data-sample="clay_portrait" aria-label="View Made of clay"><img src="sample-t2i-clay_portrait.webp" alt="Clay portrait with a purple beret and orange collar" width="512" height="512"></button>
+        <button data-sample="sports_car" aria-label="View Motion in the rain"><img src="sample-t2i-sports_car.webp" alt="Red sports car under a neon MGFlow sign" width="512" height="512"></button>
+        <button data-sample="alpaca" aria-label="View A little softness"><img src="sample-t2i-alpaca.webp" alt="A cream alpaca in a sunny meadow" width="512" height="512"></button>
+      </div>
+      <p class="film-caption">One forward pass. <span>FLUX.2 [klein] 4B post-trained with MGFlow · Selected samples</span></p>
+      <div class="stats" aria-label="Selected quantitative results">
+        <div><strong>1<span> NFE</span></strong><p>One-step sampling</p></div>
+        <div><strong>1.45<span> ↓</span></strong><p>FDr<sup>6</sup> · pMF-H · ImageNet</p></div>
+        <div><strong>0.900<span> ↑</span></strong><p>GenEval · FLUX.2 [klein] 4B</p></div>
+        <div><strong>21.98<span> ↑</span></strong><p>PickScore · FLUX.2 [klein] 4B</p></div>
+      </div>
+    </section>
+
+    <section class="section tinted" id="samples">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="eyebrow">01 / Sample explorer</p><h2>From a single step.</h2></div><p>Browse selected generated images.<br>Choose an image to inspect its prompt or class.</p></div>
+        <div class="gallery-controls"><div class="segmented" role="group" aria-label="Sample collection"><button class="active" data-task="t2i" aria-pressed="true">Text-to-image <span>8</span></button><button data-task="imagenet" aria-pressed="false">ImageNet <span>12</span></button></div><label class="search"><span class="sr-only">Filter samples by prompt or class</span><input id="sample-search" type="search" placeholder="Search prompts or classes…" autocomplete="off"></label></div>
+        <p id="collection-description" class="collection-description">FLUX.2 [klein] 4B + MGFlow · 512 × 512 · 1 NFE</p>
+        <div id="sample-grid" class="sample-grid" aria-live="polite"><p>Loading samples…</p></div>
+        <noscript><p>Enable JavaScript to browse the full collection. The images above are also available directly from this page's source repository.</p></noscript>
+        <p class="fine-print">This is a gallery of pre-generated, selected qualitative examples from the paper, not a live inference service or an unbiased sample set.</p>
+      </div>
+    </section>
+
+    <section class="section wrap" id="method">
+      <div class="section-heading"><div><p class="eyebrow">02 / The idea</p><h2>One framework.<br>Different distribution models.</h2></div><p>Distributional training matches generated and reference features. Its update depends on how we represent the distributions and how we compare them.</p></div>
+      <div class="framework-choices"><div><span>𝒮</span><p>Batch sampling</p></div><div><span>ℰ</span><p>Frozen encoders</p></div><div><span>ℳ</span><p>Distribution model</p></div><div><span>𝒟</span><p>Matching objective</p></div></div>
+      <figure class="paper-figure"><a href="figure-framework.webp" target="_blank" rel="noopener" aria-label="Open the framework figure at full resolution"><img src="figure-framework.webp" alt="A unified distributional training framework: FD-Loss models a single Gaussian, MGFlow uses Gaussian mixtures, and Drifting uses kernel density estimates. Distribution matching supplies a Wasserstein gradient-flow update." width="2400" height="1129" loading="lazy"></a><figcaption>MGFlow uses Gaussian mixtures to capture multimodal structure between a single-Gaussian approximation and sample-based representations.</figcaption></figure>
+      <div class="design-table scroll-table"><table><caption>Distribution models and matching objectives</caption><thead><tr><th scope="col">Objective</th><th scope="col">Gaussian</th><th scope="col" class="ours">Gaussian mixture</th><th scope="col">Sample-based</th></tr></thead><tbody><tr><th scope="row">OT-based</th><td>FD-Loss</td><td class="ours">MGFlow-W<sub>2</sub></td><td>W-Flow</td></tr><tr><th scope="row">Score-based (KL)</th><td>Gaussian KL</td><td class="ours">MGFlow-KL</td><td>Gaussian-kernel Drifting</td></tr></tbody></table></div>
+      <p class="fine-print">W-Flow uses empirical measures and Sinkhorn divergence; Gaussian-kernel Drifting uses kernel-smoothed densities. MGFlow-W<sub>2</sub> uses paired Gaussian transport costs, and MGFlow-KL uses paired component score fields.</p>
+      <div class="method-copy"><h3>Match the components,<br>not just their local scores.</h3><div><p>A more expressive density model alone does not ensure stable matching. Soft assignments can lose components, while global mixture scores can miss incorrect mass allocation between separated modes.</p><p>MGFlow constrains each component's batch mass with a linear program, updates its statistics, and matches corresponding reference and generated components. This pairing is used for both Gaussian transport and KL-based updates.</p></div></div>
+      <figure class="paper-figure toy"><a href="figure-pairing.webp" target="_blank" rel="noopener" aria-label="Open the component-matching figure at full resolution"><img src="figure-pairing.webp" alt="Toy experiment comparing posterior-assigned global scores, LP-assigned global scores, and LP-paired updates over time. The LP-paired update aligns component positions and reference mass allocation." width="2600" height="556" loading="lazy"></a><figcaption>Component assignment and the choice of score field both matter. The toy experiment compares soft-assigned global, LP-assigned global, and LP-paired updates.</figcaption></figure>
+    </section>
+
+    <section class="section tinted" id="results"><div class="wrap">
+      <div class="section-heading"><div><p class="eyebrow">03 / Results</p><h2>Image quality. Prompt alignment.<br>One-step generation.</h2></div><p>Selected comparisons from the paper.<br>↓ Lower is better. ↑ Higher is better.</p></div>
+      <div class="results-grid">
+        <article class="result-panel"><div class="panel-heading"><h3>ImageNet 256 × 256</h3><span>pMF-H</span></div><p class="panel-description">100 epochs · SigLIP, Inception &amp; MAE encoders</p><div class="scroll-table"><table><thead><tr><th scope="col">Method</th><th scope="col">NFE</th><th scope="col">FDr<sup>6</sup> ↓</th><th scope="col">FDr<sup>3</sup> ↓</th><th scope="col">FID ↓</th></tr></thead><tbody>
+        <tr><th scope="row">Pretrained</th><td>1</td><td>6.87</td><td>6.09</td><td>2.29</td></tr>
+        <tr><th scope="row">FD-Loss</th><td>1</td><td>1.89</td><td>2.69</td><td><b>0.77</b></td></tr>
+        <tr class="ours"><th scope="row">MGFlow-W<sub>2</sub></th><td>1</td><td>1.50</td><td>2.05</td><td>1.09</td></tr>
+        <tr class="ours"><th scope="row">MGFlow-KL</th><td>1</td><td><b>1.45</b></td><td><b>1.88</b></td><td>1.07</td></tr>
+        </tbody></table></div><p class="fine-print">FDr<sup>6</sup> averages normalized Fréchet distances across six encoders; FDr<sup>3</sup> uses three held-out encoders. FD-Loss results are from the <a href="https://arxiv.org/abs/2604.28190" target="_blank" rel="noopener noreferrer">FD-Loss paper</a>.</p></article>
+        <article class="result-panel"><div class="panel-heading"><h3>Text-to-image 512 × 512</h3><span>FLUX.2 [klein] 4B</span></div><p class="panel-description">MGFlow: 1,000 training steps · K = 1 + 4</p><div class="scroll-table"><table><thead><tr><th scope="col">Method</th><th scope="col">NFE</th><th scope="col">GenEval ↑</th><th scope="col">PickScore ↑</th></tr></thead><tbody>
+        <tr><th scope="row">FLUX.2 [klein]</th><td>4</td><td>0.794</td><td>21.85</td></tr>
+        <tr><th scope="row">DMD2</th><td>1</td><td>0.804</td><td>—</td></tr>
+        <tr><th scope="row">FD-SIM</th><td>1</td><td>0.802</td><td>21.62</td></tr>
+        <tr><th scope="row">iRDM</th><td>1</td><td>0.826</td><td>21.82</td></tr>
+        <tr><th scope="row">AMFD-C-SIM</th><td>1</td><td>0.846</td><td>21.85</td></tr>
+        <tr class="ours"><th scope="row">MGFlow · image-only</th><td>1</td><td>0.856</td><td>21.86</td></tr>
+        <tr class="ours"><th scope="row">MGFlow · joint</th><td>1</td><td><b>0.900</b></td><td><b>21.98</b></td></tr>
+        </tbody></table></div><p class="fine-print">Joint matching uses image and SigLIP2 text features. PickScore uses 499 Pick-a-Pic prompts. Baseline values follow <a href="https://arxiv.org/abs/2607.26860" target="_blank" rel="noopener noreferrer">AMFD, Table 3</a>; — denotes an unreported value.</p></article>
+      </div>
+    </div></section>
+
+    <section class="section wrap" id="checkpoints">
+      <div class="section-heading"><div><p class="eyebrow">04 / Released weights</p><h2>Build on MGFlow.</h2></div><p>Six ImageNet backbones, two objectives.<br>Two text-to-image variants.</p></div>
+      <div class="download-layout"><div><h3>ImageNet</h3><p>Online weights for JiT and pMF at B, L, and H scales. MGFlow-W<sub>2</sub> uses K = 1 + 4; MGFlow-KL uses K = 1 + 4 + 16.</p><div class="download-form"><label>Backbone<select id="backbone"><option>pMF-H</option><option>pMF-L</option><option>pMF-B</option><option>JiT-H</option><option>JiT-L</option><option>JiT-B</option></select></label><label>Objective<select id="objective"><option value="KL-k1+4+16">MGFlow-KL</option><option value="W2-k1+4">MGFlow-W₂</option></select></label></div><a id="imagenet-download" class="button primary" href="https://huggingface.co/MGFlow/MGFlow/blob/main/ImageNet/pMF-H_KL-k1%2B4%2B16.pth" target="_blank" rel="noopener noreferrer">View checkpoint <span aria-hidden="true">↗</span></a></div><div><h3>Text-to-image</h3><p>FLUX.2 [klein] 4B post-trained with MGFlow-KL. Image-only and joint image–text distribution matching use the same reference construction.</p><a class="download-row" href="https://huggingface.co/MGFlow/MGFlow/blob/main/T2I/FLUX2-klein-4B_COCO-joint.pth" target="_blank" rel="noopener noreferrer"><span>Joint image–text matching<small>COCO references + GenEval references</small></span><span aria-hidden="true">↗</span></a><a class="download-row" href="https://huggingface.co/MGFlow/MGFlow/blob/main/T2I/FLUX2-klein-4B_COCO-image.pth" target="_blank" rel="noopener noreferrer"><span>Image-only matching<small>COCO references + GenEval references</small></span><span aria-hidden="true">↗</span></a></div></div>
+      <p class="fine-print release-note">Checkpoints contain online model weights and the training step. See the <a href="https://huggingface.co/MGFlow/MGFlow" target="_blank" rel="noopener noreferrer">model repository</a> for the current release and loading information.</p>
+    </section>
+  </main>
+  <footer class="wrap footer"><a class="brand" href="#"><img src="favicon.svg" alt="" width="26" height="26"> MGFlow</a><p>Anonymous research project.<br>No analytics, trackers, or third-party embeds are added by this site.</p><a href="https://github.com/shihaoyang0423/MGFlow" target="_blank" rel="noopener noreferrer">Website source ↗</a></footer>
+  <dialog id="sample-modal" aria-labelledby="modal-title"><div class="modal-toolbar"><span id="modal-count"></span><button id="modal-close" aria-label="Close sample">✕</button></div><div class="modal-content"><img id="modal-image" alt=""><div class="modal-detail"><p class="eyebrow" id="modal-task"></p><h2 id="modal-title"></h2><p id="modal-prompt"></p><dl id="modal-meta"></dl><a id="modal-download" class="button secondary" download>Save image <span aria-hidden="true">↓</span></a><div class="modal-navigation"><button id="modal-prev" aria-label="Previous sample">← Previous</button><button id="modal-next" aria-label="Next sample">Next →</button></div></div></div></dialog>
+</body>
+</html>
