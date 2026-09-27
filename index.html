@@ -9,8 +9,8 @@
   <meta name="color-scheme" content="light">
   <title>MGFlow · One-Step Visual Generation</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=gallery2">
+  <script src="app.js?v=gallery2" defer></script>
 </head>
 <body>
   <a class="skip" href="#overview">Skip to content</a>
@@ -27,12 +27,9 @@
       <p class="hero-description">A common gradient-flow view of distributional training.<br class="desktop-break"> Gaussian mixtures capture multimodal feature distributions with a compact, adjustable representation.</p>
       <div class="hero-actions"><a class="button primary" href="#samples">Explore samples <span aria-hidden="true">↓</span></a><a class="button secondary" href="https://huggingface.co/MGFlow/MGFlow" target="_blank" rel="noopener noreferrer">Model weights <span aria-hidden="true">↗</span></a></div>
       <p class="anonymous-note">Anonymous project page</p>
-      <div class="hero-film" aria-label="Selected one-step text-to-image samples">
-        <button data-sample="garden_portrait" aria-label="View Golden-hour portrait"><img src="sample-t2i-garden_portrait.webp" alt="Portrait in a sunlit garden" width="512" height="512" fetchpriority="high"></button>
-        <button data-sample="hidden_valley" aria-label="View Beyond the archway"><img src="sample-t2i-hidden_valley.webp" alt="A green valley seen through a rocky archway" width="512" height="512"></button>
-        <button data-sample="clay_portrait" aria-label="View Made of clay"><img src="sample-t2i-clay_portrait.webp" alt="Clay portrait with a purple beret and orange collar" width="512" height="512"></button>
-        <button data-sample="sports_car" aria-label="View Motion in the rain"><img src="sample-t2i-sports_car.webp" alt="Red sports car under a neon MGFlow sign" width="512" height="512"></button>
-        <button data-sample="alpaca" aria-label="View A little softness"><img src="sample-t2i-alpaca.webp" alt="A cream alpaca in a sunny meadow" width="512" height="512"></button>
+      <div class="hero-carousel" aria-label="One-step sample showcase" aria-roledescription="carousel">
+        <div id="hero-film" class="hero-film" tabindex="0" aria-label="Scroll through full-size samples"></div>
+        <div class="film-controls"><span>One step. Many possibilities.</span><div><span id="film-position">01 / 20</span><button id="film-prev" aria-label="Previous showcase image">←</button><button id="film-pause" aria-label="Pause automatic scrolling" aria-pressed="false">Ⅱ</button><button id="film-next" aria-label="Next showcase image">→</button></div></div>
       </div>
       <p class="film-caption">One forward pass. <span>FLUX.2 [klein] 4B post-trained with MGFlow · Selected samples</span></p>
       <div class="stats" aria-label="Selected quantitative results">
@@ -45,10 +42,11 @@
 
     <section class="section tinted" id="samples">
       <div class="wrap">
-        <div class="section-heading"><div><p class="eyebrow">01 / Sample explorer</p><h2>From a single step.</h2></div><p>Browse selected generated images.<br>Choose an image to inspect its prompt or class.</p></div>
-        <div class="gallery-controls"><div class="segmented" role="group" aria-label="Sample collection"><button class="active" data-task="t2i" aria-pressed="true">Text-to-image <span>8</span></button><button data-task="imagenet" aria-pressed="false">ImageNet <span>12</span></button></div><label class="search"><span class="sr-only">Filter samples by prompt or class</span><input id="sample-search" type="search" placeholder="Search prompts or classes…" autocomplete="off"></label></div>
+        <div class="section-heading"><div><p class="eyebrow">01 / Sample explorer</p><h2>From a single step.</h2></div><p>Browse selected generated images.<br>Choose an image to view it at full resolution.</p></div>
+        <div class="gallery-controls"><div class="segmented" role="group" aria-label="Sample collection"><button class="active" data-task="t2i" aria-pressed="true">Text-to-image <span>20</span></button><button data-task="imagenet" aria-pressed="false">ImageNet <span>16</span></button></div><label class="search"><span class="sr-only">Filter samples by prompt or class</span><input id="sample-search" type="search" placeholder="Search prompts or classes…" autocomplete="off"></label></div>
         <p id="collection-description" class="collection-description">FLUX.2 [klein] 4B + MGFlow · 512 × 512 · 1 NFE</p>
         <div id="sample-grid" class="sample-grid" aria-live="polite"><p>Loading samples…</p></div>
+        <div id="gallery-pagination" class="gallery-pagination" aria-label="Sample pages"><button id="gallery-prev" aria-label="Previous sample page">← Previous</button><span id="gallery-page" aria-live="polite"></span><button id="gallery-next" aria-label="Next sample page">Next →</button></div>
         <noscript><p>Enable JavaScript to browse the full collection. The images above are also available directly from this page's source repository.</p></noscript>
         <p class="fine-print">This is a gallery of pre-generated, selected qualitative examples from the paper, not a live inference service or an unbiased sample set.</p>
       </div>
@@ -58,7 +56,7 @@
       <div class="section-heading"><div><p class="eyebrow">02 / The idea</p><h2>One framework.<br>Different distribution models.</h2></div><p>Distributional training matches generated and reference features. Its update depends on how we represent the distributions and how we compare them.</p></div>
       <div class="framework-choices"><div><span>𝒮</span><p>Batch sampling</p></div><div><span>ℰ</span><p>Frozen encoders</p></div><div><span>ℳ</span><p>Distribution model</p></div><div><span>𝒟</span><p>Matching objective</p></div></div>
       <figure class="paper-figure"><a href="figure-framework.webp" target="_blank" rel="noopener" aria-label="Open the framework figure at full resolution"><img src="figure-framework.webp" alt="A unified distributional training framework: FD-Loss models a single Gaussian, MGFlow uses Gaussian mixtures, and Drifting uses kernel density estimates. Distribution matching supplies a Wasserstein gradient-flow update." width="2400" height="1129" loading="lazy"></a><figcaption>MGFlow uses Gaussian mixtures to capture multimodal structure between a single-Gaussian approximation and sample-based representations.</figcaption></figure>
-      <div class="design-table scroll-table"><table><caption>Distribution models and matching objectives</caption><thead><tr><th scope="col">Objective</th><th scope="col">Gaussian</th><th scope="col" class="ours">Gaussian mixture</th><th scope="col">Sample-based</th></tr></thead><tbody><tr><th scope="row">OT-based</th><td>FD-Loss</td><td class="ours">MGFlow-W<sub>2</sub></td><td>W-Flow</td></tr><tr><th scope="row">Score-based (KL)</th><td>Gaussian KL</td><td class="ours">MGFlow-KL</td><td>Gaussian-kernel Drifting</td></tr></tbody></table></div>
+      <div class="design-table scroll-table"><table><caption>Distribution models and matching objectives</caption><thead><tr><th scope="col">Objective</th><th scope="col">Gaussian</th><th scope="col" class="ours">Gaussian mixture</th><th scope="col">Sample-based</th></tr></thead><tbody><tr><th scope="row">OT-based</th><td>FD-Loss<a class="table-cite" href="https://arxiv.org/abs/2604.28190" target="_blank" rel="noopener noreferrer">Yang et al., 2026 ↗</a></td><td class="ours">MGFlow-W<sub>2</sub></td><td>W-Flow<a class="table-cite" href="https://arxiv.org/abs/2605.11755" target="_blank" rel="noopener noreferrer">Han et al., 2026 ↗</a></td></tr><tr><th scope="row">Score-based (KL)</th><td>Gaussian KL</td><td class="ours">MGFlow-KL</td><td>Gaussian-kernel Drifting<a class="table-cite" href="https://arxiv.org/abs/2602.04770" target="_blank" rel="noopener noreferrer">Deng et al., 2026 ↗</a></td></tr></tbody></table></div>
       <p class="fine-print">W-Flow uses empirical measures and Sinkhorn divergence; Gaussian-kernel Drifting uses kernel-smoothed densities. MGFlow-W<sub>2</sub> uses paired Gaussian transport costs, and MGFlow-KL uses paired component score fields.</p>
       <div class="method-copy"><h3>Match the components,<br>not just their local scores.</h3><div><p>A more expressive density model alone does not ensure stable matching. Soft assignments can lose components, while global mixture scores can miss incorrect mass allocation between separated modes.</p><p>MGFlow constrains each component's batch mass with a linear program, updates its statistics, and matches corresponding reference and generated components. This pairing is used for both Gaussian transport and KL-based updates.</p></div></div>
       <figure class="paper-figure toy"><a href="figure-pairing.webp" target="_blank" rel="noopener" aria-label="Open the component-matching figure at full resolution"><img src="figure-pairing.webp" alt="Toy experiment comparing posterior-assigned global scores, LP-assigned global scores, and LP-paired updates over time. The LP-paired update aligns component positions and reference mass allocation." width="2600" height="556" loading="lazy"></a><figcaption>Component assignment and the choice of score field both matter. The toy experiment compares soft-assigned global, LP-assigned global, and LP-paired updates.</figcaption></figure>
@@ -67,18 +65,24 @@
     <section class="section tinted" id="results"><div class="wrap">
       <div class="section-heading"><div><p class="eyebrow">03 / Results</p><h2>Image quality. Prompt alignment.<br>One-step generation.</h2></div><p>Selected comparisons from the paper.<br>↓ Lower is better. ↑ Higher is better.</p></div>
       <div class="results-grid">
-        <article class="result-panel"><div class="panel-heading"><h3>ImageNet 256 × 256</h3><span>pMF-H</span></div><p class="panel-description">100 epochs · SigLIP, Inception &amp; MAE encoders</p><div class="scroll-table"><table><thead><tr><th scope="col">Method</th><th scope="col">NFE</th><th scope="col">FDr<sup>6</sup> ↓</th><th scope="col">FDr<sup>3</sup> ↓</th><th scope="col">FID ↓</th></tr></thead><tbody>
+        <article class="result-panel"><div class="panel-heading"><h3>ImageNet 256 × 256</h3><span>pMF-H &amp; JiT-H</span></div><p class="panel-description">100 epochs · SigLIP, Inception &amp; MAE encoders</p><div class="scroll-table"><table><thead><tr><th scope="col">Method</th><th scope="col">NFE</th><th scope="col">FDr<sup>6</sup> ↓</th><th scope="col">FDr<sup>3</sup> ↓</th><th scope="col">FID ↓</th></tr></thead><tbody>
+        <tr class="backbone-heading"><th colspan="5" scope="rowgroup">pMF-H<a href="https://arxiv.org/abs/2601.22158" target="_blank" rel="noopener noreferrer">Lu et al., 2026 ↗</a></th></tr>
         <tr><th scope="row">Pretrained</th><td>1</td><td>6.87</td><td>6.09</td><td>2.29</td></tr>
-        <tr><th scope="row">FD-Loss</th><td>1</td><td>1.89</td><td>2.69</td><td><b>0.77</b></td></tr>
+        <tr><th scope="row">FD-Loss<a class="table-cite" href="https://arxiv.org/abs/2604.28190" target="_blank" rel="noopener noreferrer">Yang et al., 2026 ↗</a></th><td>1</td><td>1.89</td><td>2.69</td><td><b>0.77</b></td></tr>
         <tr class="ours"><th scope="row">MGFlow-W<sub>2</sub></th><td>1</td><td>1.50</td><td>2.05</td><td>1.09</td></tr>
         <tr class="ours"><th scope="row">MGFlow-KL</th><td>1</td><td><b>1.45</b></td><td><b>1.88</b></td><td>1.07</td></tr>
-        </tbody></table></div><p class="fine-print">FDr<sup>6</sup> averages normalized Fréchet distances across six encoders; FDr<sup>3</sup> uses three held-out encoders. FD-Loss results are from the <a href="https://arxiv.org/abs/2604.28190" target="_blank" rel="noopener noreferrer">FD-Loss paper</a>.</p></article>
+        <tr class="backbone-heading"><th colspan="5" scope="rowgroup">JiT-H<a href="https://arxiv.org/abs/2511.13720" target="_blank" rel="noopener noreferrer">Li &amp; He, 2026 ↗</a></th></tr>
+        <tr><th scope="row">Pretrained</th><td>50×2×2<sup>†</sup></td><td>7.66</td><td>9.07</td><td>1.97</td></tr>
+        <tr><th scope="row">FD-Loss<a class="table-cite" href="https://arxiv.org/abs/2604.28190" target="_blank" rel="noopener noreferrer">Yang et al., 2026 ↗</a></th><td>1</td><td>2.65</td><td>4.44</td><td><b>0.75</b></td></tr>
+        <tr class="ours"><th scope="row">MGFlow-W<sub>2</sub></th><td>1</td><td>2.55</td><td>4.42</td><td>0.99</td></tr>
+        <tr class="ours"><th scope="row">MGFlow-KL</th><td>1</td><td><b>1.64</b></td><td><b>2.57</b></td><td>0.94</td></tr>
+        </tbody></table></div><p class="fine-print">FDr<sup>6</sup> averages normalized Fréchet distances across six encoders; FDr<sup>3</sup> uses three held-out encoders. <sup>†</sup> Full-CFG NFE upper bound for interval CFG. Bold marks the best value within each backbone among the methods shown.</p></article>
         <article class="result-panel"><div class="panel-heading"><h3>Text-to-image 512 × 512</h3><span>FLUX.2 [klein] 4B</span></div><p class="panel-description">MGFlow: 1,000 training steps · K = 1 + 4</p><div class="scroll-table"><table><thead><tr><th scope="col">Method</th><th scope="col">NFE</th><th scope="col">GenEval ↑</th><th scope="col">PickScore ↑</th></tr></thead><tbody>
-        <tr><th scope="row">FLUX.2 [klein]</th><td>4</td><td>0.794</td><td>21.85</td></tr>
-        <tr><th scope="row">DMD2</th><td>1</td><td>0.804</td><td>—</td></tr>
-        <tr><th scope="row">FD-SIM</th><td>1</td><td>0.802</td><td>21.62</td></tr>
-        <tr><th scope="row">iRDM</th><td>1</td><td>0.826</td><td>21.82</td></tr>
-        <tr><th scope="row">AMFD-C-SIM</th><td>1</td><td>0.846</td><td>21.85</td></tr>
+        <tr><th scope="row">FLUX.2 [klein]<a class="table-cite" href="https://bfl.ai/blog/flux2-klein-towards-interactive-visual-intelligence" target="_blank" rel="noopener noreferrer">Black Forest Labs, 2026 ↗</a></th><td>4</td><td>0.794</td><td>21.85</td></tr>
+        <tr><th scope="row">DMD2<a class="table-cite" href="https://arxiv.org/abs/2405.14867" target="_blank" rel="noopener noreferrer">Yin et al., 2024 ↗</a></th><td>1</td><td>0.804</td><td>—</td></tr>
+        <tr><th scope="row">FD-SIM<a class="table-cite" href="https://arxiv.org/abs/2604.28190" target="_blank" rel="noopener noreferrer">Yang et al., 2026 ↗</a></th><td>1</td><td>0.802</td><td>21.62</td></tr>
+        <tr><th scope="row">iRDM<a class="table-cite" href="https://arxiv.org/abs/2607.02375" target="_blank" rel="noopener noreferrer">Feng et al., 2026 ↗</a></th><td>1</td><td>0.826</td><td>21.82</td></tr>
+        <tr><th scope="row">AMFD-C-SIM<a class="table-cite" href="https://arxiv.org/abs/2607.26860" target="_blank" rel="noopener noreferrer">Liu et al., 2026 ↗</a></th><td>1</td><td>0.846</td><td>21.85</td></tr>
         <tr class="ours"><th scope="row">MGFlow · image-only</th><td>1</td><td>0.856</td><td>21.86</td></tr>
         <tr class="ours"><th scope="row">MGFlow · joint</th><td>1</td><td><b>0.900</b></td><td><b>21.98</b></td></tr>
         </tbody></table></div><p class="fine-print">Joint matching uses image and SigLIP2 text features. PickScore uses 499 Pick-a-Pic prompts. Baseline values follow <a href="https://arxiv.org/abs/2607.26860" target="_blank" rel="noopener noreferrer">AMFD, Table 3</a>; — denotes an unreported value.</p></article>
