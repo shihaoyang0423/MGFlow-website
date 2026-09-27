@@ -85,6 +85,7 @@
   },
   {
     "id": "laughing_portrait",
+    "gallery": false,
     "image": "sample-t2i-laughing_portrait.webp",
     "title": "An afternoon laugh",
     "task": "t2i",
@@ -94,6 +95,17 @@
     "paper_homepage": true,
     "prompt": "Close-up 85mm portrait of a laughing 70-year-old woman in warm afternoon sunlight, silver hair lifting in the breeze, deep laugh lines and realistic wrinkled skin texture, blurred garden background, shallow depth of field, natural documentary photography.",
     "seed": 3760915909
+  },
+  {
+    "id": "neon_city",
+    "image": "sample-t2i-neon_city.jpg",
+    "title": "Nina Lu",
+    "task": "t2i",
+    "nfe": 1,
+    "model": "FLUX.2 [klein] 4B + MGFlow",
+    "resolution": "512 × 512",
+    "prompt": "Giant glowing letters spelling \"Nina Lu\" rising above a neon-lit futuristic city skyline at night, low-angle wide shot, rain-slicked streets reflecting pink and blue light, cinematic sci-fi digital art.",
+    "seed": 3005530069
   },
   {
     "id": "fisherman_portrait",

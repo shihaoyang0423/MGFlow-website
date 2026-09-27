@@ -9,7 +9,7 @@ const modal = document.querySelector('#sample-modal');
 
 function renderSamples() {
   const term = search.value.trim().toLowerCase();
-  visibleSamples = samples.filter(s => `${s.title} ${s.prompt}`.toLowerCase().includes(term));
+  visibleSamples = samples.filter(s => s.gallery !== false && `${s.title} ${s.prompt}`.toLowerCase().includes(term));
   grid.replaceChildren();
   if (!visibleSamples.length) {
     const p = document.createElement('p'); p.className = 'empty-state';
@@ -123,7 +123,7 @@ function updateDownload() {
 }
 document.querySelector('#backbone').addEventListener('change', updateDownload);
 document.querySelector('#objective').addEventListener('change', updateDownload);
-fetch('samples.json?v=gallery3').then(r => { if (!r.ok) throw new Error('Sample collection unavailable'); return r.json(); })
+fetch('samples.json?v=gallery4').then(r => { if (!r.ok) throw new Error('Sample collection unavailable'); return r.json(); })
   .then(data => {
     samples = data.filter(s => s.task === 't2i');
     renderSamples(); renderFilm();
