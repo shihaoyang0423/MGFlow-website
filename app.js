@@ -1,31 +1,22 @@
 'use strict';
 let samples = [];
-let currentTask = 't2i';
 let visibleSamples = [];
 let modalSamples = [];
 let modalIndex = 0;
-let galleryPage = 0;
-const pageSize = 16;
 const grid = document.querySelector('#sample-grid');
 const search = document.querySelector('#sample-search');
 const modal = document.querySelector('#sample-modal');
 
 function renderSamples() {
   const term = search.value.trim().toLowerCase();
-  visibleSamples = samples.filter(s => s.task === currentTask && `${s.title} ${s.prompt}`.toLowerCase().includes(term));
-  const pages = Math.max(1, Math.ceil(visibleSamples.length / pageSize));
-  galleryPage = Math.min(galleryPage, pages - 1);
-  document.querySelector('#gallery-pagination').hidden = pages <= 1;
-  document.querySelector('#gallery-page').textContent = `${galleryPage + 1} / ${pages}`;
-  document.querySelector('#gallery-prev').disabled = galleryPage === 0;
-  document.querySelector('#gallery-next').disabled = galleryPage === pages - 1;
+  visibleSamples = samples.filter(s => `${s.title} ${s.prompt}`.toLowerCase().includes(term));
   grid.replaceChildren();
   if (!visibleSamples.length) {
     const p = document.createElement('p'); p.className = 'empty-state';
-    p.textContent = 'No matching samples. Try another word or switch collections.';
+    p.textContent = 'No matching samples. Try another word.';
     grid.append(p); return;
   }
-  visibleSamples.slice(galleryPage * pageSize, (galleryPage + 1) * pageSize).forEach(s => {
+  visibleSamples.forEach(s => {
     const button = document.createElement('button'); button.className = 'sample-card';
     button.setAttribute('aria-label', `View ${s.title}`);
     const imageWrap = document.createElement('span'); imageWrap.className = 'image-wrap';
@@ -64,84 +55,60 @@ function openSample(id, collection) {
   modalSamples = collection || samples.filter(s => s.task === 't2i');
   modalIndex = modalSamples.findIndex(s => s.id === id);
   if (modalIndex < 0) return;
-  showModalSample(); modal.showModal(); document.body.style.overflow = 'hidden';
+  showModalSample(); modal.showModal(); document.body.style.overflow = 'hidden'; updateFilmPlayback();
 }
 function stepModal(delta) {
   modalIndex = (modalIndex + delta + modalSamples.length) % modalSamples.length;
   showModalSample();
 }
-document.querySelectorAll('[data-task]').forEach(button => button.addEventListener('click', () => {
-  currentTask = button.dataset.task; search.value = ''; galleryPage = 0;
-  document.querySelectorAll('[data-task]').forEach(b => {
-    const active = b === button; b.classList.toggle('active', active); b.setAttribute('aria-pressed', String(active));
-  });
-  document.querySelector('#collection-description').textContent = currentTask === 't2i' ? 'FLUX.2 [klein] 4B + MGFlow · 512 × 512 · 1 NFE' : 'pMF-H & JiT-H + MGFlow-KL · ImageNet 256 × 256 · 1 NFE';
-  renderSamples();
-}));
-search.addEventListener('input', () => { galleryPage = 0; renderSamples(); });
-document.querySelector('#gallery-prev').addEventListener('click', () => { galleryPage--; renderSamples(); grid.scrollIntoView({block: 'start'}); });
-document.querySelector('#gallery-next').addEventListener('click', () => { galleryPage++; renderSamples(); grid.scrollIntoView({block: 'start'}); });
+search.addEventListener('input', renderSamples);
 
-const film = document.querySelector('#hero-film');
+const filmTrack = document.querySelector('#film-track');
 const pauseButton = document.querySelector('#film-pause');
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-let filmPaused = reducedMotion.matches;
-let filmHovered = false;
-function updatePauseButton() {
+let filmPaused = false;
+function updateFilmPlayback() {
   pauseButton.textContent = filmPaused ? '▶' : 'Ⅱ';
   pauseButton.setAttribute('aria-label', filmPaused ? 'Resume automatic scrolling' : 'Pause automatic scrolling');
   pauseButton.setAttribute('aria-pressed', String(filmPaused));
-}
-function moveFilm(delta) {
-  const card = film.firstElementChild;
-  if (!card) return;
-  const step = card.getBoundingClientRect().width + parseFloat(getComputedStyle(film).gap);
-  const end = film.scrollWidth - film.clientWidth;
-  const next = film.scrollLeft + delta * step;
-  film.scrollTo({left: next > end + 1 ? 0 : next < -1 ? end : Math.min(end, next), behavior: reducedMotion.matches ? 'instant' : 'smooth'});
+  filmTrack.classList.toggle('is-paused', filmPaused || modal.open);
 }
 function renderFilm() {
-  const collection = samples.filter(s => s.task === 't2i');
+  const collection = samples;
+  const group = document.createElement('div'); group.className = 'film-group';
   collection.forEach((s, i) => {
     const button = document.createElement('button');
     button.setAttribute('aria-label', `View ${s.title}`);
     const img = new Image(); img.src = s.image; img.alt = s.prompt;
-    img.width = img.height = 512; img.loading = i < 3 ? 'eager' : 'lazy';
+    img.width = img.height = 512; img.loading = 'eager';
     if (i === 0) img.fetchPriority = 'high';
     const caption = document.createElement('span'); caption.textContent = s.title;
     button.append(img, caption);
     button.addEventListener('click', () => openSample(s.id, collection));
-    film.append(button);
+    group.append(button);
   });
-  const updatePosition = () => {
-    const step = film.firstElementChild.getBoundingClientRect().width + parseFloat(getComputedStyle(film).gap);
-    const index = Math.min(collection.length, Math.round(film.scrollLeft / step) + 1);
-    document.querySelector('#film-position').textContent = `${String(index).padStart(2, '0')} / ${collection.length}`;
+  // Two identical groups make the loop boundary visually continuous.
+  const repeat = group.cloneNode(true);
+  repeat.setAttribute('aria-hidden', 'true');
+  repeat.querySelectorAll('button').forEach((button, i) => {
+    button.tabIndex = -1;
+    button.addEventListener('click', () => openSample(collection[i].id, collection));
+  });
+  filmTrack.replaceChildren(group, repeat);
+  const updateSize = () => {
+    const distance = group.getBoundingClientRect().width;
+    filmTrack.style.setProperty('--film-distance', `${distance}px`);
+    filmTrack.style.setProperty('--film-duration', `${distance / 28}s`);
   };
-  film.addEventListener('scroll', updatePosition, {passive: true});
-  updatePosition();
+  new ResizeObserver(updateSize).observe(group);
+  updateSize();
+  updateFilmPlayback();
 }
-pauseButton.addEventListener('click', () => { filmPaused = !filmPaused; updatePauseButton(); });
-document.querySelector('#film-prev').addEventListener('click', () => { filmPaused = true; updatePauseButton(); moveFilm(-1); });
-document.querySelector('#film-next').addEventListener('click', () => { filmPaused = true; updatePauseButton(); moveFilm(1); });
-film.addEventListener('pointerenter', () => { filmHovered = true; });
-film.addEventListener('pointerleave', () => { filmHovered = false; });
-film.addEventListener('pointerdown', () => { filmPaused = true; updatePauseButton(); });
-film.addEventListener('keydown', e => {
-  if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
-    e.preventDefault(); filmPaused = true; updatePauseButton(); moveFilm(e.key === 'ArrowRight' ? 1 : -1);
-  }
-});
-reducedMotion.addEventListener('change', () => { if (reducedMotion.matches) { filmPaused = true; updatePauseButton(); } });
-updatePauseButton();
-setInterval(() => {
-  const bounds = film.getBoundingClientRect();
-  if (!filmPaused && !filmHovered && !document.hidden && !modal.open && !film.contains(document.activeElement) && bounds.bottom > 0 && bounds.top < window.innerHeight) moveFilm(1);
-}, 4500);
+pauseButton.addEventListener('click', () => { filmPaused = !filmPaused; updateFilmPlayback(); });
+updateFilmPlayback();
 document.querySelector('#modal-close').addEventListener('click', () => modal.close());
 document.querySelector('#modal-prev').addEventListener('click', () => stepModal(-1));
 document.querySelector('#modal-next').addEventListener('click', () => stepModal(1));
-modal.addEventListener('close', () => { document.body.style.overflow = ''; });
+modal.addEventListener('close', () => { document.body.style.overflow = ''; updateFilmPlayback(); });
 modal.addEventListener('click', e => {
   const r = modal.getBoundingClientRect();
   if (e.target === modal && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) modal.close();
@@ -156,10 +123,9 @@ function updateDownload() {
 }
 document.querySelector('#backbone').addEventListener('change', updateDownload);
 document.querySelector('#objective').addEventListener('change', updateDownload);
-fetch('samples.json?v=gallery2').then(r => { if (!r.ok) throw new Error('Sample collection unavailable'); return r.json(); })
+fetch('samples.json?v=gallery3').then(r => { if (!r.ok) throw new Error('Sample collection unavailable'); return r.json(); })
   .then(data => {
-    samples = data;
-    document.querySelectorAll('[data-task]').forEach(button => { button.querySelector('span').textContent = samples.filter(s => s.task === button.dataset.task).length; });
+    samples = data.filter(s => s.task === 't2i');
     renderSamples(); renderFilm();
   })
   .catch(() => { grid.textContent = 'The sample gallery could not be loaded. Please reload the page.'; });
