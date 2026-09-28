@@ -2,7 +2,7 @@
 
 Project website for **Unifying Distributional Training for One-Step Visual Generation**.
 
-- Website: https://shihaoyang0423.github.io/MGFlow/
+- Website: https://shihaoyang0423.github.io/MGFlow-website/
 - Model weights: https://huggingface.co/MGFlow/MGFlow
 
 ## Local preview
@@ -15,4 +15,4 @@ The gallery shows selected, pre-generated examples from the paper, not live infe
 
 ## Deployment
 
-GitHub Pages publishes the root of the `main` branch. Keep `.nojekyll` in the root. All local asset paths are relative so the site works under `/MGFlow/`.
+GitHub Pages publishes the root of the `main` branch. Keep `.nojekyll` in the root. All local asset paths are relative so the site works under `/MGFlow-website/`.
