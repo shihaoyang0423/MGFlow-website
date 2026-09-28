@@ -119,7 +119,7 @@ modal.addEventListener('keydown', e => {
 });
 function updateDownload() {
   const filename = `${document.querySelector('#backbone').value}_${document.querySelector('#objective').value}.pth`;
-  document.querySelector('#imagenet-download').href = `https://huggingface.co/MGFlow/MGFlow/blob/main/ImageNet/${encodeURIComponent(filename)}`;
+  document.querySelector('#imagenet-download').href = `https://huggingface.co/shy0423/MGFlow/blob/main/Checkpoints/ImageNet/Post-trained/${encodeURIComponent(filename)}`;
 }
 document.querySelector('#backbone').addEventListener('change', updateDownload);
 document.querySelector('#objective').addEventListener('change', updateDownload);
