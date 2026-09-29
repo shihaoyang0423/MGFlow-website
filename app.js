@@ -118,8 +118,11 @@ modal.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') { e.preventDefault(); stepModal(1); }
 });
 function updateDownload() {
-  const filename = `${document.querySelector('#backbone').value}_${document.querySelector('#objective').value}.pth`;
+  const backbone = document.querySelector('#backbone').value;
+  const objective = document.querySelector('#objective');
+  const filename = `${backbone}_${objective.value}.pth`;
   document.querySelector('#imagenet-download').href = `https://huggingface.co/shy0423/MGFlow/blob/main/Checkpoints/ImageNet/Post-trained/${encodeURIComponent(filename)}`;
+  document.querySelector('#imagenet-checkpoint-detail').textContent = `${backbone} · ${objective.selectedOptions[0].text} weights · 1 step`;
 }
 document.querySelector('#backbone').addEventListener('change', updateDownload);
 document.querySelector('#objective').addEventListener('change', updateDownload);

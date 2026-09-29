@@ -32,4 +32,6 @@
 .resource-group + .resource-group{margin-top:24px}
 .resource-group h4{margin:0 0 5px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .resource-group .download-row:first-of-type{border-top:1px solid var(--line)}
+@media(min-width:621px){.download-layout{grid-template-rows:repeat(4,auto);column-gap:90px;row-gap:0}.download-layout>div{display:grid;grid-row:span 4;grid-template-rows:subgrid}}
+@media(min-width:621px) and (max-width:900px){.download-layout{column-gap:38px}}
 @media(max-width:620px){.hero-carousel{margin-top:32px;width:calc(100vw - 24px)}.film-group{gap:14px;padding-right:14px}.hero-film button{width:86vw}.hero-film button span{font-size:14px;padding:36px 18px 16px}.film-controls{font-size:10px}.film-controls button{width:30px;height:30px}.table-cite{font-size:9px}.backbone-heading th a{display:block;margin-left:0;margin-top:3px}}

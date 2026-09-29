@@ -99,7 +99,18 @@
 
     <section class="section wrap" id="checkpoints">
       <div class="section-heading"><div><p class="eyebrow">04 / Models &amp; data</p><h2>Build on MGFlow.</h2></div><p>Six ImageNet backbones, two objectives.<br>Two text-to-image variants, training data, and references.</p></div>
-      <div class="download-layout"><div><h3>ImageNet</h3><p>Online weights for JiT and pMF at B, L, and H scales. MGFlow-W<sub>2</sub> uses K = 1 + 4; MGFlow-KL uses K = 1 + 4 + 16.</p><div class="download-form"><label>Backbone<select id="backbone"><option>pMF-H</option><option>pMF-L</option><option>pMF-B</option><option>JiT-H</option><option>JiT-L</option><option>JiT-B</option></select></label><label>Objective<select id="objective"><option value="KL-k1+4+16">MGFlow-KL</option><option value="W2-k1+4">MGFlow-W₂</option></select></label></div><a id="imagenet-download" class="button primary" href="https://huggingface.co/shy0423/MGFlow/blob/main/Checkpoints/ImageNet/Post-trained/pMF-H_KL-k1%2B4%2B16.pth" target="_blank" rel="noopener noreferrer">View checkpoint <span aria-hidden="true">↗</span></a></div><div>
+      <div class="download-layout"><div><h3>ImageNet</h3><p>Post-trained JiT and pMF models at B, L, and H scales. MGFlow-W<sub>2</sub> uses K = 1 + 4; MGFlow-KL uses K = 1 + 4 + 16.</p>
+          <div class="resource-group">
+            <h4>Model checkpoints</h4>
+            <div class="download-form"><label>Backbone<select id="backbone"><option>pMF-H</option><option>pMF-L</option><option>pMF-B</option><option>JiT-H</option><option>JiT-L</option><option>JiT-B</option></select></label><label>Objective<select id="objective"><option value="KL-k1+4+16">MGFlow-KL</option><option value="W2-k1+4">MGFlow-W₂</option></select></label></div>
+            <a id="imagenet-download" class="download-row" href="https://huggingface.co/shy0423/MGFlow/blob/main/Checkpoints/ImageNet/Post-trained/pMF-H_KL-k1%2B4%2B16.pth" target="_blank" rel="noopener noreferrer"><span>Selected post-trained checkpoint<small id="imagenet-checkpoint-detail">pMF-H · MGFlow-KL weights · 1 step</small></span><span aria-hidden="true">↗</span></a>
+            <a class="download-row" href="https://huggingface.co/shy0423/MGFlow/tree/main/Checkpoints/ImageNet/Base" target="_blank" rel="noopener noreferrer"><span>Base model checkpoints<small>JiT and pMF · B, L, H</small></span><span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="resource-group">
+            <h4>Training resources</h4>
+            <a class="download-row" href="https://huggingface.co/shy0423/MGFlow/tree/main/Reference/ImageNet" target="_blank" rel="noopener noreferrer"><span>Fitted Gaussian references<small>SigLIP, Inception, MAE · K = 1, 4, 16</small></span><span aria-hidden="true">↗</span></a>
+          </div>
+        </div><div>
           <h3>Text-to-image</h3>
           <p>FLUX.2 [klein] 4B post-trained with MGFlow-KL. Image-only and joint image–text distribution matching use the same reference construction.</p>
           <div class="resource-group">
