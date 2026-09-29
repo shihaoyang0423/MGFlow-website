@@ -84,6 +84,7 @@
         </tbody></table></div><p class="fine-print">FDr<sup>6</sup> averages normalized Fréchet distances across six encoders; FDr<sup>3</sup> uses three held-out encoders. <sup>†</sup> Full-CFG NFE upper bound for interval CFG. Bold marks the best value within each backbone among the methods shown.</p></article>
         <article class="result-panel"><div class="panel-heading"><h3>Text-to-image 512 × 512</h3><span>FLUX.2 [klein] 4B</span></div><p class="panel-description">MGFlow: 1,000 training steps · K = 1 + 4</p><div class="scroll-table"><table><thead><tr><th scope="col">Method</th><th scope="col">NFE</th><th scope="col">GenEval ↑</th><th scope="col">PickScore ↑</th></tr></thead><tbody>
         <tr><th scope="row">FLUX.2 [klein]<a class="table-cite" href="https://bfl.ai/blog/flux2-klein-towards-interactive-visual-intelligence" target="_blank" rel="noopener noreferrer">Black Forest Labs, 2026 ↗</a></th><td>4</td><td>0.794</td><td>21.85</td></tr>
+        <tr><th scope="row">One-step initialization</th><td>1</td><td>0.5351</td><td>20.1036</td></tr>
         <tr><th scope="row">DMD2<a class="table-cite" href="https://arxiv.org/abs/2405.14867" target="_blank" rel="noopener noreferrer">Yin et al., 2024 ↗</a></th><td>1</td><td>0.804</td><td>—</td></tr>
         <tr><th scope="row">FD-SIM<a class="table-cite" href="https://arxiv.org/abs/2604.28190" target="_blank" rel="noopener noreferrer">Yang et al., 2026 ↗</a></th><td>1</td><td>0.802</td><td>21.62</td></tr>
         <tr><th scope="row">iRDM<a class="table-cite" href="https://arxiv.org/abs/2607.02375" target="_blank" rel="noopener noreferrer">Feng et al., 2026 ↗</a></th><td>1</td><td>0.826</td><td>21.82</td></tr>
@@ -92,7 +93,7 @@
         <tr><th scope="row">AMFD-C-10 enc.<a class="table-cite" href="https://arxiv.org/abs/2607.26860" target="_blank" rel="noopener noreferrer">Liu et al., 2026 ↗</a></th><td>1</td><td>0.845</td><td>21.82</td></tr>
         <tr class="ours"><th scope="row">MGFlow · image-only</th><td>1</td><td>0.856</td><td>21.86</td></tr>
         <tr class="ours"><th scope="row">MGFlow · joint</th><td>1</td><td><b>0.900</b></td><td><b>21.98</b></td></tr>
-        </tbody></table></div><p class="fine-print">Joint matching uses image and SigLIP2 text features. PickScore uses 499 Pick-a-Pic prompts. Baseline values follow <a href="https://arxiv.org/abs/2607.26860" target="_blank" rel="noopener noreferrer">AMFD, Table 3</a>; — denotes an unreported value.</p></article>
+        </tbody></table></div><p class="fine-print">The one-step initialization is evaluated before MGFlow post-training. Joint matching uses image and SigLIP2 text features. PickScore uses 499 Pick-a-Pic prompts. Published baseline values follow <a href="https://arxiv.org/abs/2607.26860" target="_blank" rel="noopener noreferrer">AMFD, Table 3</a>; — denotes an unreported value.</p></article>
       </div>
     </div></section>
 
