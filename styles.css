@@ -29,4 +29,7 @@
 .backbone-heading th a{font-weight:400;color:var(--muted);font-size:10px;margin-left:8px}
 .result-panel .reference-link{font-size:9px;font-weight:400;color:var(--muted);margin-left:3px;white-space:nowrap}
 .reference-link:hover{text-decoration:underline;color:var(--accent)}
+.resource-group + .resource-group{margin-top:24px}
+.resource-group h4{margin:0 0 5px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.resource-group .download-row:first-of-type{border-top:1px solid var(--line)}
 @media(max-width:620px){.hero-carousel{margin-top:32px;width:calc(100vw - 24px)}.film-group{gap:14px;padding-right:14px}.hero-film button{width:86vw}.hero-film button span{font-size:14px;padding:36px 18px 16px}.film-controls{font-size:10px}.film-controls button{width:30px;height:30px}.table-cite{font-size:9px}.backbone-heading th a{display:block;margin-left:0;margin-top:3px}}
