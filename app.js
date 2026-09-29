@@ -123,9 +123,12 @@ function updateDownload() {
   const filename = `${backbone}_${objective.value}.pth`;
   document.querySelector('#imagenet-download').href = `https://huggingface.co/shy0423/MGFlow/blob/main/Checkpoints/ImageNet/Post-trained/${encodeURIComponent(filename)}`;
   document.querySelector('#imagenet-checkpoint-detail').textContent = `${backbone} · ${objective.selectedOptions[0].text} weights · 1 step`;
+  document.querySelector('#imagenet-base-download').href = `https://huggingface.co/shy0423/MGFlow/blob/main/Checkpoints/ImageNet/Base/${encodeURIComponent(backbone)}.pth`;
+  document.querySelector('#imagenet-base-detail').textContent = `${backbone} · pretrained weights`;
 }
 document.querySelector('#backbone').addEventListener('change', updateDownload);
 document.querySelector('#objective').addEventListener('change', updateDownload);
+updateDownload();
 fetch('samples.json?v=gallery4').then(r => { if (!r.ok) throw new Error('Sample collection unavailable'); return r.json(); })
   .then(data => {
     samples = data.filter(s => s.task === 't2i');
