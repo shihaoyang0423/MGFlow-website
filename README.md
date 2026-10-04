@@ -11,7 +11,7 @@ Run `python3 -m http.server 8080` in this directory, then open `http://localhost
 
 This is a static site with no build dependencies. `index.html` contains the research summary and results; `styles.css` controls layout; `app.js` implements sample browsing and checkpoint selection. `samples.json` contains the public sample metadata.
 
-The gallery shows selected, pre-generated examples from the paper, not live inference. Image files are re-encoded for web delivery without source metadata. No analytics, external fonts, tracking scripts, or third-party embeds are included. Search-engine indexing is discouraged during anonymous review.
+The gallery shows selected, pre-generated examples from the paper, not live inference. Image files are re-encoded for web delivery without source metadata. No analytics, external fonts, tracking scripts, or third-party embeds are included.
 
 ## Deployment
 
