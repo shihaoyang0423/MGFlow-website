@@ -3,6 +3,7 @@
 Project website for **Unifying Distributional Training for One-Step Visual Generation**.
 
 - Website: https://shihaoyang0423.github.io/MGFlow-website/
+- Interactive demo: https://huggingface.co/spaces/shy0423/mgflow
 - Model weights: https://huggingface.co/shy0423/MGFlow
 
 ## Local preview
