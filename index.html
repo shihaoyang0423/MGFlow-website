@@ -9,10 +9,10 @@
   <meta name="color-scheme" content="light">
   <title>MGFlow · One-Step Visual Generation</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=hero-links1">
+  <link rel="stylesheet" href="styles.css?v=mobile-20261021">
   <script src="app.js?v=gallery4" defer></script>
-  <link rel="stylesheet" href="imagebench.css?v=20261021">
-  <script src="imagebench.js?v=20261021" defer></script>
+  <link rel="stylesheet" href="imagebench.css?v=mobile-20261021">
+  <script src="imagebench.js?v=mobile-20261021" defer></script>
 </head>
 <body>
   <a class="skip" href="#overview">Skip to content</a>
@@ -130,15 +130,27 @@
         <p class="ib-intro">On ImageBench, MGFlow (4B) achieves an Overall score of <strong>52.8</strong> at <strong>0.8 seconds per image</strong> with one-step generation. It lies on the observed quality–latency Pareto frontier among both all 76 published runs and the 37 locally evaluated models.</p>
         <div class="ib-controls">
           <div class="ib-segment" role="group" aria-label="ImageBench model view"><button type="button" data-filter="All" aria-pressed="true">All models <span>76</span></button><button type="button" data-filter="Local" aria-pressed="false">Local <span>37</span></button></div>
-          <div class="ib-actions"><span>Hover or focus a model for details · click to view its evaluation</span><button type="button" id="ib-download">Download SVG ↓</button></div>
+          <div class="ib-actions"><span>Hover or focus a model for details · click to view its evaluation</span><button type="button" id="ib-download" aria-label="Download SVG ↓"><span class="ib-download-full">Download SVG ↓</span><span class="ib-download-short" aria-hidden="true">SVG ↓</span></button></div>
         </div>
         <div class="chart-card">
           <div class="plot-meta"><span id="ib-count" aria-live="polite">76 models</span><span class="legend"><span class="legend-dot" aria-hidden="true"></span>Published runs <span class="legend-ring" aria-hidden="true"></span>MGFlow <span id="ib-pareto-legend"><span class="legend-frontier" aria-hidden="true"></span>Pareto frontier</span></span></div>
           <div class="chart-scroll" tabindex="0" role="region" aria-label="Interactive ImageBench chart; scroll horizontally on small screens"><svg id="ib-chart" viewBox="0 0 1160 680" role="img" aria-labelledby="ib-plot-title ib-plot-description"><title id="ib-plot-title">Overall score versus average generation latency</title><desc id="ib-plot-description">Higher and farther left is better. The horizontal axis is logarithmic. MGFlow has an Overall score of 52.8 and an average latency of 0.8 seconds.</desc></svg></div>
+        <div class="ib-mobile-tools">
+          <p id="ib-touch-help">Tap a dot for scores, or choose a model below.</p>
+          <label class="sr-only" for="ib-model-select">Inspect an ImageBench model</label>
+          <select id="ib-model-select"><option value="">Choose a model…</option></select>
+        </div>
           <div id="ib-tooltip" class="tooltip" role="status" hidden></div>
         </div>
+        <aside id="ib-touch-details" class="ib-touch-details" aria-labelledby="ib-selected-name" hidden>
+          <div class="ib-details-heading"><span>Model details</span><button type="button" id="ib-close-details" aria-label="Close model details">×</button></div>
+          <strong id="ib-selected-name"></strong>
+          <div id="ib-selected-metrics" class="ib-selected-metrics" aria-live="polite"></div>
+          <p id="ib-selected-frontier" class="frontier-status" hidden>On the Pareto frontier in this view</p>
+          <a id="ib-selected-link" target="_blank" rel="noopener noreferrer">View evaluation on ImageBench ↗</a>
+        </aside>
         <div class="below-chart">
-          <div class="mgflow-summary"><span class="mgflow-name">MGFlow · 1 step</span><span>Overall <strong>52.8</strong></span><span>Average latency <strong>0.8 s</strong></span><span>EPS <strong>62.4</strong></span></div>
+          <div class="mgflow-summary"><span class="mgflow-name">MGFlow · 1 step</span><span class="ib-stat"><span>Overall</span> <strong>52.8</strong></span><span class="ib-stat"><span>Average latency</span> <strong>0.8 s</strong></span><span class="ib-stat"><span>EPS</span> <strong>62.4</strong></span></div>
           <p id="ib-pareto-note" class="measurement"><strong id="ib-frontier-summary" aria-live="polite"></strong> A run is on the frontier if no other visible run has lower or equal latency and higher or equal Overall, with at least one strict improvement. The dashed line connects observed frontier points.</p>
           <p class="measurement ib-protocol">Overall combines capability and estimated aesthetic preference equally. Latency is reported by ImageBench; local and API runs use different execution paths. <a href="https://imagebench.ai/imagebench-v1" target="_blank" rel="noopener noreferrer">Source leaderboard ↗</a> · Snapshot: 2026-10-21.</p>
         </div>

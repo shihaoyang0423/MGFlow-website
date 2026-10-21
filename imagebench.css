@@ -15,6 +15,17 @@
 #imagebench .ib-actions{display:flex;align-items:center;gap:18px;font-size:11px;color:var(--muted)}
 #imagebench .ib-actions button{flex:none;border:1px solid #d3dfd7;border-radius:6px;background:#fff;padding:8px 11px;color:#315d50;font-size:11px}
 #imagebench .ib-actions button:hover{background:#eaf4ef}
+#imagebench .ib-mobile-tools{display:none}
+#imagebench .ib-download-short{display:none}
+#imagebench .ib-touch-details{position:fixed;z-index:25;bottom:max(12px,env(safe-area-inset-bottom));left:max(12px,env(safe-area-inset-left));right:max(12px,env(safe-area-inset-right));max-width:420px;max-height:calc(100dvh - 24px);overflow:auto;margin-inline:auto;padding:12px 18px 16px;border:1px solid #d3dfd7;border-radius:14px;background:#fff;box-shadow:0 12px 50px #102c3333}
+#imagebench .ib-details-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:12px;color:var(--muted)}
+#imagebench .ib-details-heading button{width:44px;height:44px;border:0;border-radius:50%;background:#f4f7f4;color:#315d50;font-size:24px;line-height:1}
+#imagebench #ib-selected-name{display:block;margin:8px 0 14px;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+#imagebench .ib-selected-metrics{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;font-size:12px;font-variant-numeric:tabular-nums}
+#imagebench .ib-selected-metrics span{display:block;color:var(--muted)}
+#imagebench .ib-selected-metrics strong{font-size:18px;line-height:1.4}
+#imagebench .ib-touch-details .frontier-status{font-size:12px;line-height:1.5;margin:12px 0 0}
+#imagebench #ib-selected-link{display:flex;align-items:center;min-height:44px;margin-top:10px;font-size:13px;color:#197b6e;text-decoration:underline;text-underline-offset:3px}
 #imagebench .chart-card{position:relative;overflow:hidden;border:1px solid var(--border);border-radius:12px;background:#fff;padding:17px 18px 8px}
 #imagebench .plot-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--muted);padding:0 5px 5px}
 #imagebench .legend{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
@@ -23,7 +34,12 @@
 #imagebench #ib-pareto-legend{display:inline-flex;align-items:center;gap:6px;margin-left:10px}
 #imagebench .legend-frontier{display:inline-block;width:20px;border-top:2px dashed var(--pareto)}
 #imagebench .chart-scroll{width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+#imagebench .chart-scroll:focus{outline:none}
+#imagebench .chart-scroll:focus-visible{outline:2px solid #60a99a;outline-offset:-2px}
 #imagebench #ib-chart{display:block;width:100%;height:auto;overflow:visible;font-family:Arial,Helvetica,sans-serif}
+#imagebench #ib-chart.is-compact .axis-text{font-size:10px}
+#imagebench #ib-chart.is-compact .axis-title{font-size:11px}
+#imagebench #ib-chart.is-compact .mgflow .label{font-size:11px;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
 #imagebench .grid{stroke:var(--border);stroke-width:1}
 #imagebench .axis-text{fill:var(--muted);font-size:12px}
 #imagebench .axis-title{fill:var(--muted);font-size:14px}
@@ -34,6 +50,8 @@
 #imagebench .point:hover .dot,#imagebench .point:focus-visible .dot{fill-opacity:1;stroke:var(--foreground);stroke-width:2}
 #imagebench .point:hover .label,#imagebench .point:focus-visible .label{font-weight:700;text-decoration:underline}
 #imagebench .point:focus,#imagebench .point:focus-visible{outline:none;box-shadow:none}
+#imagebench .point.is-selected .dot{fill-opacity:1;stroke:var(--foreground);stroke-width:2.5}
+#imagebench .point.is-selected .label{font-weight:700}
 #imagebench .point.mgflow .label{font-size:13px;font-weight:700}
 #imagebench .point.mgflow .leader{stroke:var(--accent);opacity:1;stroke-width:1.2}
 #imagebench .pareto-line{fill:none;stroke:var(--pareto);stroke-width:2;stroke-dasharray:7 5;stroke-linejoin:round;stroke-linecap:round;pointer-events:none}
@@ -65,5 +83,7 @@
 #imagebench td a:hover{text-decoration:underline;text-underline-offset:3px}
 #imagebench #ib-load-error{margin-top:15px;color:#a23a32;font-size:13px}
 #imagebench [hidden]{display:none!important}
-@media(max-width:900px){#imagebench .ib-actions>span{display:none}#imagebench #ib-chart{min-width:960px}}
+@media(max-width:900px),(hover:none),(pointer:coarse){#imagebench .ib-actions>span{display:none}#imagebench .ib-mobile-tools{display:block;margin:0 0 16px}#imagebench .ib-mobile-tools p{margin:0 0 9px;color:#536660;font-size:12px;line-height:1.6}#imagebench #ib-model-select{width:100%;min-height:44px;padding:9px 12px;border:1px solid #d3dfd7;border-radius:7px;background:#fff;color:#315d50;font-size:16px}#imagebench .ib-segment button,#imagebench .ib-actions button{min-height:44px}#imagebench summary{min-height:44px;padding-block:10px}}
+@media(max-width:900px){#imagebench #ib-chart{min-width:0}#imagebench .chart-scroll{overflow:hidden}#imagebench .ib-mobile-tools{margin:12px 0 6px;padding-inline:5px}}
 @media(max-width:620px){#imagebench{margin-top:38px;padding-top:32px}#imagebench h3{font-size:23px}#imagebench .ib-heading{display:block}#imagebench .ib-source{display:inline-block;margin-top:12px}#imagebench .ib-intro{font-size:13px;margin-bottom:20px}#imagebench .chart-card{padding:12px 7px 6px}#imagebench .plot-meta{font-size:10px;gap:8px}#imagebench .legend-ring{margin-left:5px}#imagebench #ib-pareto-legend{margin-left:5px}#imagebench .mgflow-summary{gap:10px 20px;font-size:12px}#imagebench .measurement{font-size:11px}#imagebench .ib-segment button{padding:7px 11px;font-size:12px}#imagebench .ib-actions button{padding:7px 9px}}
+@media(max-width:620px){#imagebench .ib-download-full{display:none}#imagebench .ib-download-short{display:inline}#imagebench .plot-meta{font-size:11px;gap:9px}#imagebench .mgflow-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid #dbe5dc;border-radius:11px;background:#fff;overflow:hidden}#imagebench .mgflow-name{grid-column:1/-1;padding:11px 13px;border-bottom:1px solid #e8eeea;font-size:13px}#imagebench .ib-stat{display:flex;flex-direction:column;gap:5px;padding:12px 10px}#imagebench .ib-stat>span{font-size:10px;white-space:nowrap}#imagebench .ib-stat strong{padding-left:0;font-size:20px;line-height:1.3;letter-spacing:-.3px}#imagebench .ib-stat+.ib-stat{border-left:1px solid #e8eeea}}

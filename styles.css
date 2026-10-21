@@ -50,3 +50,6 @@
 .resource-group h4{margin:0 0 5px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .resource-group .download-row:first-of-type{border-top:1px solid var(--line)}
 @media(max-width:620px){.hero-carousel{margin-top:32px;width:calc(100vw - 24px)}.film-group{gap:14px;padding-right:14px}.hero-film button{width:86vw}.hero-film button span{font-size:14px;padding:36px 18px 16px}.film-controls{font-size:10px}.film-controls button{width:30px;height:30px}.table-cite{font-size:9px}.backbone-heading th a{display:block;margin-left:0;margin-top:3px}}
+
+/* Comfortable touch controls and input text that does not trigger iOS zoom. */
+@media(max-width:900px),(pointer:coarse){.nav-links a{display:inline-flex;align-items:center;min-height:44px}.hero-resource{min-height:44px}.search input,.download-form select{min-height:44px;font-size:16px}.film-controls button,.modal-toolbar button{width:44px;height:44px}.modal-navigation button{min-height:44px;padding:8px 0}dialog{max-height:92dvh}}
