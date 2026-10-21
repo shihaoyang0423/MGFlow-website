@@ -1,0 +1,766 @@
+{
+  "source": "https://imagebench.ai/imagebench-v1",
+  "date": "2026-10-21",
+  "models": [
+    {
+      "rank": 1,
+      "model": "openai/gpt-image-2.5-sunburst",
+      "overall": 82.1,
+      "capability": 88.0,
+      "eps": 76.2,
+      "latency": 16.9,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/openai--gpt-image-2.5-sunburst"
+    },
+    {
+      "rank": 2,
+      "model": "openai/gpt-image-2.5-flare",
+      "overall": 81.5,
+      "capability": 86.5,
+      "eps": 76.5,
+      "latency": 13.2,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/openai--gpt-image-2.5-flare"
+    },
+    {
+      "rank": 3,
+      "model": "openai/gpt-image-2",
+      "overall": 80.0,
+      "capability": 87.0,
+      "eps": 73.0,
+      "latency": 45.3,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/openai--gpt-image-2"
+    },
+    {
+      "rank": 4,
+      "model": "xai/grok-imagine-2",
+      "overall": 75.4,
+      "capability": 79.2,
+      "eps": 71.6,
+      "latency": 69.0,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/xai--grok-imagine-2"
+    },
+    {
+      "rank": 5,
+      "model": "fal/google/nano-banana-2",
+      "overall": 74.9,
+      "capability": 77.1,
+      "eps": 72.6,
+      "latency": 28.1,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--google--nano-banana-2"
+    },
+    {
+      "rank": 6,
+      "model": "fal/reve/2.1",
+      "overall": 74.8,
+      "capability": 79.7,
+      "eps": 69.9,
+      "latency": 45.0,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--reve--2.1"
+    },
+    {
+      "rank": 7,
+      "model": "fal/google/nano-banana-pro",
+      "overall": 68.8,
+      "capability": 78.6,
+      "eps": 59.1,
+      "latency": 23.4,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--google--nano-banana-pro"
+    },
+    {
+      "rank": 8,
+      "model": "fal/bytedance/seedream-v5-pro",
+      "overall": 68.0,
+      "capability": 75.0,
+      "eps": 60.9,
+      "latency": 147.4,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--bytedance--seedream-v5-pro"
+    },
+    {
+      "rank": 9,
+      "model": "fal/microsoft/mai-image-2.5",
+      "overall": 68.0,
+      "capability": 69.3,
+      "eps": 66.8,
+      "latency": 25.4,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--microsoft--mai-image-2.5"
+    },
+    {
+      "rank": 10,
+      "model": "fal/qwen-image-2-pro",
+      "overall": 66.9,
+      "capability": 75.5,
+      "eps": 63.1,
+      "latency": 12.8,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--qwen-image-2-pro"
+    },
+    {
+      "rank": 11,
+      "model": "local/ming-image-0.1-design-6b",
+      "overall": 64.9,
+      "capability": 61.5,
+      "eps": 68.3,
+      "latency": 12.4,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--ming-image-0.1-design-6b"
+    },
+    {
+      "rank": 12,
+      "model": "local/sensenova-u1.5-8b-mot-base",
+      "overall": 64.8,
+      "capability": 70.3,
+      "eps": 59.3,
+      "latency": 44.1,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--sensenova-u1.5-8b-mot-base"
+    },
+    {
+      "rank": 13,
+      "model": "local/boogu-image-turbo",
+      "overall": 64.3,
+      "capability": 62.0,
+      "eps": 66.6,
+      "latency": 9.9,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--boogu-image-turbo"
+    },
+    {
+      "rank": 14,
+      "model": "local/sensenova-u1.5-8b-mot-8step",
+      "overall": 64.0,
+      "capability": 63.5,
+      "eps": 64.4,
+      "latency": 4.1,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--sensenova-u1.5-8b-mot-8step"
+    },
+    {
+      "rank": 15,
+      "model": "bfl/flux-2-pro",
+      "overall": 62.2,
+      "capability": 67.2,
+      "eps": 57.3,
+      "latency": 11.8,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/bfl--flux-2-pro"
+    },
+    {
+      "rank": 16,
+      "model": "fal/bytedance/seedream-v4",
+      "overall": 62.2,
+      "capability": 68.2,
+      "eps": 56.2,
+      "latency": 14.1,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--bytedance--seedream-v4"
+    },
+    {
+      "rank": 17,
+      "model": "replicate/google/imagen-4-ultra",
+      "overall": 62.0,
+      "capability": 62.0,
+      "eps": 61.9,
+      "latency": 14.6,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/replicate--google--imagen-4-ultra"
+    },
+    {
+      "rank": 18,
+      "model": "fal/luma/uni-1-max",
+      "overall": 62.0,
+      "capability": 78.6,
+      "eps": 45.5,
+      "latency": 88.2,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--luma--uni-1-max"
+    },
+    {
+      "rank": 19,
+      "model": "bfl/flux-2-max",
+      "overall": 61.9,
+      "capability": 67.2,
+      "eps": 56.6,
+      "latency": 26.7,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/bfl--flux-2-max"
+    },
+    {
+      "rank": 20,
+      "model": "local/flux-3-klein-nvfp4",
+      "overall": 60.3,
+      "capability": 64.6,
+      "eps": 56.0,
+      "latency": 13.7,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--flux-3-klein-nvfp4"
+    },
+    {
+      "rank": 21,
+      "model": "local/qwen-image-2512-20b",
+      "overall": 59.6,
+      "capability": 52.1,
+      "eps": 67.1,
+      "latency": 80.2,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--qwen-image-2512-20b"
+    },
+    {
+      "rank": 22,
+      "model": "local/krea-2-turbo",
+      "overall": 59.1,
+      "capability": 63.0,
+      "eps": 55.2,
+      "latency": 73.2,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--krea-2-turbo"
+    },
+    {
+      "rank": 23,
+      "model": "local/flux-2-klein-9b",
+      "overall": 59.0,
+      "capability": 57.8,
+      "eps": 60.1,
+      "latency": 8.5,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--flux-2-klein-9b"
+    },
+    {
+      "rank": 24,
+      "model": "local/flux-3-klein-fp8",
+      "overall": 58.8,
+      "capability": 60.4,
+      "eps": 57.2,
+      "latency": 25.2,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--flux-3-klein-fp8"
+    },
+    {
+      "rank": 25,
+      "model": "local/flux-3-klein-bf16",
+      "overall": 58.6,
+      "capability": 59.9,
+      "eps": 57.3,
+      "latency": 19.6,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--flux-3-klein-bf16"
+    },
+    {
+      "rank": 26,
+      "model": "fal/hunyuan-image-3",
+      "overall": 57.7,
+      "capability": 52.1,
+      "eps": 63.2,
+      "latency": 24.4,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--hunyuan-image-3"
+    },
+    {
+      "rank": 27,
+      "model": "fal/hidream-o1-image-8b",
+      "overall": 57.7,
+      "capability": 52.6,
+      "eps": 62.8,
+      "latency": 19.4,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--hidream-o1-image-8b"
+    },
+    {
+      "rank": 28,
+      "model": "bfl/flux-2-klein-9b",
+      "overall": 57.2,
+      "capability": 57.3,
+      "eps": 57.1,
+      "latency": 4.1,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/bfl--flux-2-klein-9b"
+    },
+    {
+      "rank": 29,
+      "model": "local/krea-2-turbo-no-filter",
+      "overall": 56.2,
+      "capability": 58.3,
+      "eps": 54.0,
+      "latency": 71.5,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--krea-2-turbo-no-filter"
+    },
+    {
+      "rank": 30,
+      "model": "replicate/recraft-ai/recraft-v4",
+      "overall": 55.5,
+      "capability": 62.5,
+      "eps": 48.5,
+      "latency": 9.5,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/replicate--recraft-ai--recraft-v4"
+    },
+    {
+      "rank": 31,
+      "model": "local/flux-3-klein-base-nvfp4",
+      "overall": 55.3,
+      "capability": 64.1,
+      "eps": 46.4,
+      "latency": 80.4,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--flux-3-klein-base-nvfp4"
+    },
+    {
+      "rank": 32,
+      "model": "local/flux-3-klein-base-fp8",
+      "overall": 54.9,
+      "capability": 62.5,
+      "eps": 47.3,
+      "latency": 164.3,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--flux-3-klein-base-fp8"
+    },
+    {
+      "rank": 33,
+      "model": "fal/bytedance/seedream-v5-lite",
+      "overall": 54.8,
+      "capability": 76.6,
+      "eps": 33.1,
+      "latency": 35.5,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--bytedance--seedream-v5-lite"
+    },
+    {
+      "rank": 34,
+      "model": "local/qwen-image-2.1-7b-nf4",
+      "overall": 54.6,
+      "capability": 64.1,
+      "eps": 45.1,
+      "latency": 14.6,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--qwen-image-2.1-7b-nf4"
+    },
+    {
+      "rank": 35,
+      "model": "local/flux-2-klein-4b",
+      "overall": 53.6,
+      "capability": 52.6,
+      "eps": 54.6,
+      "latency": 4.5,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--flux-2-klein-4b"
+    },
+    {
+      "rank": 36,
+      "model": "local/flux-3-klein-base-bf16",
+      "overall": 53.5,
+      "capability": 60.4,
+      "eps": 46.6,
+      "latency": 114.1,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--flux-3-klein-base-bf16"
+    },
+    {
+      "rank": 37,
+      "model": "replicate/google/imagen-4-fast",
+      "overall": 53.0,
+      "capability": 51.6,
+      "eps": 54.5,
+      "latency": 5.8,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/replicate--google--imagen-4-fast"
+    },
+    {
+      "rank": 38,
+      "model": "local/mgflow-flux2-klein-4b",
+      "overall": 52.8,
+      "capability": 43.2,
+      "eps": 62.4,
+      "latency": 0.8,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--mgflow-flux2-klein-4b"
+    },
+    {
+      "rank": 39,
+      "model": "local/iris-3b",
+      "overall": 52.6,
+      "capability": 53.1,
+      "eps": 52.1,
+      "latency": 180.3,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--iris-3b"
+    },
+    {
+      "rank": 40,
+      "model": "bfl/flux-1-dev",
+      "overall": 52.0,
+      "capability": 45.8,
+      "eps": 58.1,
+      "latency": 10.2,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/bfl--flux-1-dev"
+    },
+    {
+      "rank": 41,
+      "model": "bfl/flux-2-klein-4b",
+      "overall": 51.8,
+      "capability": 50.5,
+      "eps": 53.2,
+      "latency": 3.8,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/bfl--flux-2-klein-4b"
+    },
+    {
+      "rank": 42,
+      "model": "replicate/minimax/image-01",
+      "overall": 51.8,
+      "capability": 50.0,
+      "eps": 53.6,
+      "latency": 22.4,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/replicate--minimax--image-01"
+    },
+    {
+      "rank": 43,
+      "model": "local/iris-3b-turbo",
+      "overall": 51.6,
+      "capability": 47.4,
+      "eps": 55.9,
+      "latency": 4.2,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--iris-3b-turbo"
+    },
+    {
+      "rank": 44,
+      "model": "local/sefi-image-5b-base",
+      "overall": 51.5,
+      "capability": 62.5,
+      "eps": 40.4,
+      "latency": 130.6,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--sefi-image-5b-base"
+    },
+    {
+      "rank": 45,
+      "model": "local/z-image-turbo-6b",
+      "overall": 51.3,
+      "capability": 52.6,
+      "eps": 49.9,
+      "latency": 18.1,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--z-image-turbo-6b"
+    },
+    {
+      "rank": 46,
+      "model": "fal/ideogram/v3",
+      "overall": 50.8,
+      "capability": 48.4,
+      "eps": 53.3,
+      "latency": 12.9,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--ideogram--v3"
+    },
+    {
+      "rank": 47,
+      "model": "fal/krea/v2-medium-turbo",
+      "overall": 50.7,
+      "capability": 60.9,
+      "eps": 40.5,
+      "latency": 15.5,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--krea--v2-medium-turbo"
+    },
+    {
+      "rank": 48,
+      "model": "fal/bria/fast",
+      "overall": 50.5,
+      "capability": 56.2,
+      "eps": 44.8,
+      "latency": 12.4,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--bria--fast"
+    },
+    {
+      "rank": 49,
+      "model": "local/sefi-image-5b-rl",
+      "overall": 50.0,
+      "capability": 60.9,
+      "eps": 39.1,
+      "latency": 130.7,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--sefi-image-5b-rl"
+    },
+    {
+      "rank": 50,
+      "model": "fal/hidream-o1-image-dev-8b",
+      "overall": 50.0,
+      "capability": 46.4,
+      "eps": 53.6,
+      "latency": 13.0,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--hidream-o1-image-dev-8b"
+    },
+    {
+      "rank": 51,
+      "model": "local/mage-flow-turbo",
+      "overall": 49.9,
+      "capability": 54.2,
+      "eps": 45.6,
+      "latency": 4.6,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--mage-flow-turbo"
+    },
+    {
+      "rank": 52,
+      "model": "local/z-image-6b",
+      "overall": 49.3,
+      "capability": 56.8,
+      "eps": 41.7,
+      "latency": 130.7,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--z-image-6b"
+    },
+    {
+      "rank": 53,
+      "model": "replicate/leonardoai/lucid-origin",
+      "overall": 48.8,
+      "capability": 52.1,
+      "eps": 45.6,
+      "latency": 8.2,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/replicate--leonardoai--lucid-origin"
+    },
+    {
+      "rank": 54,
+      "model": "fal/krea/v2-medium",
+      "overall": 48.7,
+      "capability": 62.5,
+      "eps": 34.9,
+      "latency": 18.5,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--krea--v2-medium"
+    },
+    {
+      "rank": 55,
+      "model": "local/prxpixel-t2i-7b",
+      "overall": 48.2,
+      "capability": 46.4,
+      "eps": 50.0,
+      "latency": 64.7,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--prxpixel-t2i-7b"
+    },
+    {
+      "rank": 56,
+      "model": "fal/ideogram/v4",
+      "overall": 48.0,
+      "capability": 62.0,
+      "eps": 34.0,
+      "latency": 16.6,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--ideogram--v4"
+    },
+    {
+      "rank": 57,
+      "model": "fal/krea/v2-large",
+      "overall": 48.0,
+      "capability": 64.1,
+      "eps": 31.9,
+      "latency": 30.1,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--krea--v2-large"
+    },
+    {
+      "rank": 58,
+      "model": "bfl/flux-1.1-pro-ultra",
+      "overall": 48.0,
+      "capability": 45.3,
+      "eps": 50.7,
+      "latency": 13.9,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/bfl--flux-1.1-pro-ultra"
+    },
+    {
+      "rank": 59,
+      "model": "fal/recraft/v3",
+      "overall": 47.8,
+      "capability": 41.1,
+      "eps": 54.6,
+      "latency": 10.1,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--recraft--v3"
+    },
+    {
+      "rank": 60,
+      "model": "replicate/google/imagen-4",
+      "overall": 47.8,
+      "capability": 46.4,
+      "eps": 49.2,
+      "latency": 10.3,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/replicate--google--imagen-4"
+    },
+    {
+      "rank": 61,
+      "model": "local/bonsai-image-ternary-4b",
+      "overall": 47.6,
+      "capability": 45.3,
+      "eps": 49.9,
+      "latency": 4.1,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--bonsai-image-ternary-4b"
+    },
+    {
+      "rank": 62,
+      "model": "bfl/flux-1.1-pro",
+      "overall": 47.0,
+      "capability": 45.8,
+      "eps": 48.2,
+      "latency": 4.6,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/bfl--flux-1.1-pro"
+    },
+    {
+      "rank": 63,
+      "model": "local/mage-flow-rl",
+      "overall": 46.8,
+      "capability": 51.0,
+      "eps": 42.7,
+      "latency": 20.9,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--mage-flow-rl"
+    },
+    {
+      "rank": 64,
+      "model": "local/mage-flow-base",
+      "overall": 46.0,
+      "capability": 50.0,
+      "eps": 42.0,
+      "latency": 30.4,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--mage-flow-base"
+    },
+    {
+      "rank": 65,
+      "model": "local/hidream-i1-full-17b",
+      "overall": 45.0,
+      "capability": 40.1,
+      "eps": 49.9,
+      "latency": 91.3,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--hidream-i1-full-17b"
+    },
+    {
+      "rank": 66,
+      "model": "local/krea-2-raw",
+      "overall": 44.2,
+      "capability": 61.5,
+      "eps": 26.9,
+      "latency": 912.2,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--krea-2-raw"
+    },
+    {
+      "rank": 67,
+      "model": "local/sefi-image-5b-turbo",
+      "overall": 44.0,
+      "capability": 56.8,
+      "eps": 31.2,
+      "latency": 5.9,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--sefi-image-5b-turbo"
+    },
+    {
+      "rank": 68,
+      "model": "replicate/luma/photon",
+      "overall": 42.6,
+      "capability": 51.6,
+      "eps": 33.7,
+      "latency": 11.1,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/replicate--luma--photon"
+    },
+    {
+      "rank": 69,
+      "model": "fal/flux-1-schnell",
+      "overall": 38.3,
+      "capability": 37.0,
+      "eps": 39.5,
+      "latency": 4.1,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/fal--flux-1-schnell"
+    },
+    {
+      "rank": 70,
+      "model": "local/nucleus-image-17b-a2b",
+      "overall": 37.9,
+      "capability": 44.3,
+      "eps": 31.5,
+      "latency": 39.1,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--nucleus-image-17b-a2b"
+    },
+    {
+      "rank": 71,
+      "model": "local/sefi-image-2b-turbo",
+      "overall": 35.2,
+      "capability": 44.3,
+      "eps": 26.1,
+      "latency": 3.6,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--sefi-image-2b-turbo"
+    },
+    {
+      "rank": 72,
+      "model": "local/sana-1.5-1.6b",
+      "overall": 34.5,
+      "capability": 34.9,
+      "eps": 34.2,
+      "latency": 11.1,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--sana-1.5-1.6b"
+    },
+    {
+      "rank": 73,
+      "model": "replicate/luma/photon-flash",
+      "overall": 32.9,
+      "capability": 45.8,
+      "eps": 20.0,
+      "latency": 6.4,
+      "type": "API",
+      "url": "https://imagebench.ai/imagebench-v1/replicate--luma--photon-flash"
+    },
+    {
+      "rank": 74,
+      "model": "local/tinydit-256",
+      "overall": 21.5,
+      "capability": 21.9,
+      "eps": 21.1,
+      "latency": 0.5,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--tinydit-256"
+    },
+    {
+      "rank": 75,
+      "model": "local/supra2-img-100m",
+      "overall": 8.8,
+      "capability": 14.1,
+      "eps": 3.4,
+      "latency": 0.5,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--supra2-img-100m"
+    },
+    {
+      "rank": 76,
+      "model": "local/tld-101m",
+      "overall": 8.4,
+      "capability": 13.0,
+      "eps": 3.8,
+      "latency": 0.2,
+      "type": "Local",
+      "url": "https://imagebench.ai/imagebench-v1/local--tld-101m"
+    }
+  ]
+}

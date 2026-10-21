@@ -10,7 +10,7 @@ Project website for **Unifying Distributional Training for One-Step Visual Gener
 
 Run `python3 -m http.server 8080` in this directory, then open `http://localhost:8080`.
 
-This is a static site with no build dependencies. `index.html` contains the research summary and results; `styles.css` controls layout; `app.js` implements sample browsing and checkpoint selection. `samples.json` contains the public sample metadata.
+This is a static site with no build dependencies. `index.html` contains the research summary and results; `styles.css` controls layout; `app.js` implements sample browsing and checkpoint selection. `samples.json` contains the public sample metadata. The Results section also includes a native interactive ImageBench chart in `imagebench.js` / `imagebench.css`, with the 2026-10-21 leaderboard snapshot in `imagebench-data.json` (76 All models / 37 Local). Hover or focus a point for metrics; switch views or export the current SVG. The chart is served locally with the page and requires no external embed.
 
 The gallery shows selected, pre-generated examples from the paper, not live inference. Image files are re-encoded for web delivery without source metadata. No analytics, external fonts, tracking scripts, or third-party embeds are included.
 
