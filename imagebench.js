@@ -128,10 +128,10 @@ function render(preserveSelection=false){
     if(p.mgflow)group.append(el('circle',{cx:p.x,cy:p.y,r:bounds.compact?9:10,fill:'none',stroke:'#22c55e','stroke-width':1.6}));
     if(state.pareto&&p.frontier)group.append(el('circle',{cx:p.x,cy:p.y,r:bounds.compact&&!p.mgflow?5.5:7.5,class:'frontier-ring'}));
     group.append(el('circle',{cx:p.x,cy:p.y,r:p.mgflow?(bounds.compact?5:6):(bounds.compact?3.4:4.8),class:'dot'}));
-    group.addEventListener('pointerenter',e=>{if(!compactInteraction())showTip(m,e,group);});
-    group.addEventListener('pointermove',e=>{if(!compactInteraction())showTip(m,e,group);});
+    group.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&touchDetails.hidden)showTip(m,e,group);});
+    group.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'&&touchDetails.hidden)showTip(m,e,group);});
     group.addEventListener('pointerleave',()=>tip.hidden=true);
-    group.addEventListener('focus',e=>{if(!compactInteraction())showTip(m,e,group);});
+    group.addEventListener('focus',e=>{if(window.matchMedia('(hover:hover)').matches&&touchDetails.hidden)showTip(m,e,group);});
     group.addEventListener('blur',()=>tip.hidden=true);
     group.addEventListener('click',e=>{if(compactInteraction()){e.preventDefault();selectModel(m,group);}});
     svg.append(group);
